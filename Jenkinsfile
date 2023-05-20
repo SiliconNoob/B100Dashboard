@@ -8,10 +8,11 @@ pipeline {
                 sh 'python Scraping/scrap.py'
             }
         }
-        }
+
         stage('Upload Data') {
             steps {
                 echo 'Uploading....'
             }
         }
+    }
 }
