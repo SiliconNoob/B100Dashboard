@@ -5,7 +5,7 @@ pipeline {
         stage('Get Data') {
             steps {
                 echo 'Running scraping script'
-                sh 'python scrap.py'
+                bat 'python scrap.py'
             }
         }
 
