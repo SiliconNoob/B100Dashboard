@@ -5,7 +5,7 @@ pipeline {
         stage('Get Data') {
             steps {
                 echo 'Running scraping script'
-                sh 'python scraping/scrap.py'
+                sh 'python Scraping/scrap.py'
             }
         }
         }
@@ -14,5 +14,4 @@ pipeline {
                 echo 'Uploading....'
             }
         }
-    }
 }
