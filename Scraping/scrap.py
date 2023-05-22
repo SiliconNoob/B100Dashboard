@@ -44,7 +44,7 @@ for song in mydivs:
 
 # Write the results of scraping into a csv with the name of the week it was updated
 B200_date = date.today()
-filename = f'B200_Weekly/{B200_date}.csv'
+filename = f'../B200_Weekly/{B200_date}.csv'
     
 
 with open(filename, 'w', newline='') as f:
