@@ -5,11 +5,11 @@ from datetime import date
 import csv
 
 def process_new(pre_processed):
-    pre_processed.insert(3,None)
+    pre_processed.insert(3,0)
     pre_processed.append(None)
 
 # Attributes to extract
-attributes = ["Position", "Title", "Authors", "Last Week Position", "Peak Position", "Weeks On Chart"]
+attributes = ["position", "title", "authors", "last week position", "peak position", "weeks on chart"]
 
 url = "https://www.billboard.com/charts/billboard-global-200/"
 
