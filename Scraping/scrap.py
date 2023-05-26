@@ -9,7 +9,7 @@ def process_new(pre_processed):
     pre_processed.append(None)
 
 # Attributes to extract
-attributes = ["position", "title", "authors", "last week position", "peak position", "weeks on chart"]
+attributes = ["position", "title", "authors", "last week position", "peak position", "weeks on chart", "chart_date"]
 
 url = "https://www.billboard.com/charts/billboard-global-200/"
 
@@ -22,7 +22,11 @@ soup = BeautifulSoup(html_content, "lxml")
 # Get the 200 rows with this week's songs
 mydivs = soup.find_all("ul", class_= "o-chart-results-list-row")
 
+# All scraped songs will be stored here
 all_songs = []
+
+# Get date the content was scraped in
+B200_date = date.today()
 
 # Process the text in each row to retrieve individual attributes
 for song in mydivs:
@@ -38,12 +42,12 @@ for song in mydivs:
 
     # Put them in a Key-Value format, potentially used in the future as a JSON object
     packaged = {attrib:value for attrib, value in zip(attributes, processed[:-3])}
+    packaged['chart_date'] = B200_date
 
     all_songs.append(packaged)
     
 
 # Write the results of scraping into a csv with the name of the week it was updated
-B200_date = date.today()
 filename = f'../B200_Weekly/{B200_date}.csv'
     
 

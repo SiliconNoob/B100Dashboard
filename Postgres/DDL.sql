@@ -5,7 +5,8 @@ CREATE TABLE song(
 	last_week_position INT,
 	peak_position INT,
 	num_weeks_on_chart INT,
-    PRIMARY KEY(title, authors)
+	chart_date DATE,
+    PRIMARY KEY(title, authors, chart_date)
 );
 
 CREATE TABLE dates_on_chart(
@@ -13,9 +14,9 @@ CREATE TABLE dates_on_chart(
 	authors VARCHAR(100),
     chart_date DATE,
     FOREIGN KEY (title, authors) REFERENCES song(title, authors),
-    PRIMARY KEY(title, authors)
+    PRIMARY KEY(title, authors,chart_date)
 );
 
 CREATE TABLE song_author(
-	author_name VARCHAR(100) PRIMARY KEY,
+	author_name VARCHAR(100) UNIQUE
 );

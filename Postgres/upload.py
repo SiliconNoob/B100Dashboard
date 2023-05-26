@@ -34,8 +34,8 @@ with open(csv_file_path, 'r') as file:
 
     # Insert data from the CSV file into the table
     insert_query = """
-        INSERT INTO song (position, title, authors, last_week_position, peak_position, weeks_on_chart)
-        VALUES (%s, %s, %s, %s, %s, %s)
+        INSERT INTO song (position, title, authors, last_week_position, peak_position, num_weeks_on_chart, chart_date)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
     """.format(table_name)
     cursor.executemany(insert_query, reader)
     conn.commit()
