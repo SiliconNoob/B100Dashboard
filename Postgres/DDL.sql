@@ -1,22 +1,20 @@
 CREATE TABLE song(
+	Title VARCHAR(50),
+	Author VARCHAR(100),
+	peak_pos INT,
+	PRIMARY KEY (Title, Author)
+);
+
+CREATE TABLE weeklyChartDate(
+	chart_week DATE PRIMARY KEY
+);
+
+CREATE TABLE appearsIn(
+	Title VARCHAR(50),
+	Author VARCHAR(100),
+	chart_week DATE,
 	position INT,
-	title VARCHAR(50),
-	authors VARCHAR(100),
-	last_week_position INT,
-	peak_position INT,
-	num_weeks_on_chart INT,
-	chart_date DATE,
-    PRIMARY KEY(title, authors, chart_date)
-);
-
-CREATE TABLE dates_on_chart(
-	title VARCHAR(50),
-	authors VARCHAR(100),
-    chart_date DATE,
-    FOREIGN KEY (title, authors) REFERENCES song(title, authors),
-    PRIMARY KEY(title, authors,chart_date)
-);
-
-CREATE TABLE song_author(
-	author_name VARCHAR(100) UNIQUE
+	num_weeks INT,
+	FOREIGN KEY (Title, Author) REFERENCES song(Title,Author),
+	PRIMARY KEY (Title, Author, chart_week)
 );
